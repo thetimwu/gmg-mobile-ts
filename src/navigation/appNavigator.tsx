@@ -4,15 +4,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "./authStackNavigator";
 import MainTab from "./mainTabNavigator";
 import { useSelector } from "react-redux";
-import { IAuth } from "../features/auth/types";
+import { RootState } from "../redux-store/rootReducer";
 
 const Stack = createStackNavigator();
 
 const appNavigator: FC = () => {
-  const isSignedIn = useSelector((state: IAuth) => state.loggedIn);
+  const isSignedIn = useSelector((state: RootState) => state.auth.loggedIn);
+
   return (
     <NavigationContainer>
-      {console.log(isSignedIn)}
       {isSignedIn ? <MainTab /> : <AuthStack />}
     </NavigationContainer>
   );
