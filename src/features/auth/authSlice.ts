@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser, IAuth, ILoginDetail } from "./types";
 // import { API_URL } from "../../middleware/constants";
 import { AppThunk } from "../../redux-store/store";
-import { CALL_API, IAction } from "../../middleware/Api";
+import { CALL_API, IAction } from "../../middleware/api";
 
 const initUserState: IAuth = {
   authToken: null,
