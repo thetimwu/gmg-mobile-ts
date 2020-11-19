@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import {
   StyleSheet,
+  Alert,
   View,
   KeyboardAvoidingView,
   NativeSyntheticEvent,
@@ -20,7 +21,7 @@ const loginScreen: FC = () => {
   const dispatch = useDispatch();
 
   const error = useSelector((state: IAuth) => state.error);
-  console.log(error);
+
   const nameChangeHandler = (text: string): void => {
     setUsername(text);
   };
@@ -30,8 +31,11 @@ const loginScreen: FC = () => {
   };
 
   const loginHandler = () => {
-    dispatch(loginAsync({ username, password }));
-    console.log(error);
+    if (username.length > 0 && password.length > 0) {
+      dispatch(loginAsync({ username, password }));
+    } else {
+      Alert.alert("Missing Fields");
+    }
   };
 
   return (

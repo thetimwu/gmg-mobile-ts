@@ -1,10 +1,16 @@
 import React, { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { List, TouchableRipple } from "react-native-paper";
 import { logout } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
+import { ROUTES } from "../routes";
+import { SettingProps } from "../navigation/types";
 
-const settingScreen: FC = () => {
+const settingScreen: FC<SettingProps> = ({
+  route,
+  navigation,
+}: SettingProps) => {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -13,7 +19,9 @@ const settingScreen: FC = () => {
   // this.props.navigation.navigate("ChangePassword")
   return (
     <View>
-      <TouchableRipple onPress={() => {}}>
+      <TouchableRipple
+        onPress={() => navigation.navigate(ROUTES.ChangePassword)}
+      >
         <List.Item
           title={"Change Password"}
           left={(props) => <List.Icon {...props} icon="cached" />}
