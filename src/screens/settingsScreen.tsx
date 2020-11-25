@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { List, TouchableRipple } from "react-native-paper";
 import { logout } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
@@ -14,7 +13,8 @@ const settingScreen: FC<SettingProps> = ({
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    dispatch(logout);
+    dispatch(logout());
+    console.log("loging out tt");
   };
   // this.props.navigation.navigate("ChangePassword")
   return (

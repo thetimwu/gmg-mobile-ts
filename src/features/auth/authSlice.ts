@@ -23,6 +23,9 @@ function login_failure(state: IAuth, { error }: IAction) {
 }
 
 function logout_request(state: IAuth) {
+  state.authToken = null;
+  state.user = null;
+  state.loggedIn = false;
   state.loading = true;
   state.error = "";
 }
